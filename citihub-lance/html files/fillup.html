@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CitiHub – Tenant Information</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <link rel="stylesheet" href="../css files/fillup.css"/>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <img src="../images/logo.png" class="nav-logo" alt="CitiHub Logo"/>
+    <div>
+      <div class="nav-brand-text">CITIHUB DORMITORY</div>   
+      <div class="nav-brand-sub">📍 1st St, Santa Mesa, Manila, Metro Manila</div>
+    </div>
+  </div>
+  <div class="nav-step-label">Step 2 of 2 — Complete Your Profile</div>
+</nav>
+
+<!-- HERO BANNER -->
+<div class="hero-banner">
+  <div class="hero-inner">
+      <img src="../images/logo.png" class="hero-icon" alt="CitiHub Logo" />
+    <div>
+      <div class="hero-title">Welcome to CitiHub!</div>
+      <div class="hero-sub">Your account is created. Please complete your tenant information and upload the required documents to proceed with your move-in.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-wrap">
+  <div class="progress-bar">
+    <div class="progress-step done">
+      <div class="step-circle">✓</div>
+      <div class="step-label">Create Account</div>
+    </div>
+    <div class="progress-line filled"></div>
+    <div class="progress-step active">
+      <div class="step-circle">2</div>
+      <div class="step-label">Personal Info</div>
+    </div>
+    <div class="progress-line"></div>
+    <div class="progress-step">
+      <div class="step-circle">3</div>
+      <div class="step-label">Upload Documents</div>
+    </div>
+    <div class="progress-line"></div>
+    <div class="progress-step">
+      <div class="step-circle">4</div>
+      <div class="step-label">Submit</div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- SECTION 1: BASIC INFO -->
+  <div class="section-card" id="section-personal">
+    <div class="section-header">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Personal Information
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label">First Name <span class="req">*</span></label>
+        <input type="text" class="field-input" placeholder="e.g. Juan dela Cruz"/>
+      </div>
+      <div class="field">
+        <label class="field-label">Last Name <span class="req">*</span></label>
+        <input type="text" class="field-input" placeholder="e.g. Santos"/>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label">Email Address <span class="req">*</span></label>
+        <input type="email" class="field-input" placeholder="yourname@email.com"/>
+      </div>
+      <div class="field">
+        <label class="field-label">Phone Number <span class="req">*</span></label>
+        <input type="tel" class="field-input" placeholder="+63 9XX XXX XXXX"/>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label">Date of Birth <span class="req">*</span></label>
+        <input type="date" class="field-input"/>
+      </div>
+      <div class="field">
+        <label class="field-label">Gender <span class="req">*</span></label>
+        <select class="field-input">
+          <option value="" disabled selected>Select gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Bisexual</option>
+          <option>Prefer not to say</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field full">
+      <label class="field-label">Home Address <span class="req">*</span></label>
+      <input type="text" class="field-input" placeholder="Street, Barangay, City, Province"/>
+    </div>
+  </div>
+
+  <!-- SECTION 2: EMERGENCY CONTACT -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Emergency Contact
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label">Contact Name <span class="req">*</span></label>
+        <input type="text" class="field-input" placeholder="Full name"/>
+      </div>
+      <div class="field">
+        <label class="field-label">Relationship <span class="req">*</span></label>
+        <select class="field-input">
+          <option value="" disabled selected>Select relationship</option>
+          <option>Parent</option>
+          <option>Sibling</option>
+          <option>Spouse</option>
+          <option>Relative</option>
+          <option>Friend</option>
+          <option>Guardian</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label class="field-label">Phone Number <span class="req">*</span></label>
+        <input type="tel" class="field-input" placeholder="+63 9XX XXX XXXX"/>
+      </div>
+      <div class="field">
+        <label class="field-label">Alternative Number</label>
+        <input type="tel" class="field-input" placeholder="+63 2 XXXX XXXX"/>
+      </div>
+    </div>
+
+    <div class="field full">
+      <label class="field-label">Address</label>
+      <input type="text" class="field-input" placeholder="Street, Barangay, City, Province"/>
+    </div>
+  </div>
+
+  <!-- SECTION 3: APPLICANT TYPE -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        Applicant Type
+      </div>
+      <div class="section-sub">Select your status to see the required documents</div>
+    </div>
+
+    <div class="applicant-types">
+      <div class="applicant-card" onclick="selectType('student')" id="type-student">
+        <div class="applicant-icon">🎓</div>
+        <div class="applicant-label">Student</div>
+        <div class="applicant-desc">Currently enrolled in school or university</div>
+      </div>
+      <div class="applicant-card" onclick="selectType('employed')" id="type-employed">
+        <div class="applicant-icon">💼</div>
+        <div class="applicant-label">Employed</div>
+        <div class="applicant-desc">Currently working with a company or employer</div>
+      </div>
+      <div class="applicant-card" onclick="selectType('unemployed')" id="type-unemployed">
+        <div class="applicant-icon">🔍</div>
+        <div class="applicant-label">Unemployed</div>
+        <div class="applicant-desc">Currently not employed or between jobs</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: DOCUMENT UPLOAD -->
+  <div class="section-card" id="section-docs">
+    <div class="section-header">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Required Documents
+      </div>
+      <div class="section-sub">Please select your applicant type above first</div>
+    </div>
+
+    <!-- STUDENT DOCS -->
+    <div class="doc-group" id="docs-student" style="display:none;">
+      <div class="doc-notice">
+        <span>📋</span> Required documents for <strong>Students</strong>
+      </div>
+      <div class="upload-grid">
+        <div class="upload-box" onclick="triggerUpload('school-id')">
+          <input type="file" id="school-id" accept="image/*,.pdf" style="display:none" onchange="handleUpload(this,'school-id-display')"/>
+          <div class="upload-icon">🪪</div>
+          <div class="upload-title">School ID <span class="req">*</span></div>
+          <div class="upload-hint">JPG, PNG or PDF • Max 5MB</div>
+          <div class="upload-status" id="school-id-display">Click to upload</div>
+        </div>
+        <div class="upload-box" onclick="triggerUpload('psa-birth')">
+          <input type="file" id="psa-birth" accept="image/*,.pdf" style="display:none" onchange="handleUpload(this,'psa-birth-display')"/>
+          <div class="upload-icon">📄</div>
+          <div class="upload-title">PSA Birth Certificate <span class="req">*</span></div>
+          <div class="upload-hint">JPG, PNG or PDF • Max 5MB</div>
+          <div class="upload-status" id="psa-birth-display">Click to upload</div>
+        </div>
+        <div class="upload-box" onclick="triggerUpload('school-reg')">
+          <input type="file" id="school-reg" accept="image/*,.pdf" style="display:none" onchange="handleUpload(this,'school-reg-display')"/>
+          <div class="upload-icon">📋</div>
+          <div class="upload-title">School Registration <span class="req">*</span></div>
+          <div class="upload-hint">JPG, PNG or PDF • Max 5MB</div>
+          <div class="upload-status" id="school-reg-display">Click to upload</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMPLOYED DOCS -->
+    <div class="doc-group" id="docs-employed" style="display:none;">
+      <div class="doc-notice">
+        <span>📋</span> Required documents for <strong>Employed</strong> applicants
+      </div>
+      <div class="upload-grid">
+        <div class="upload-box" onclick="triggerUpload('company-id')">
+          <input type="file" id="company-id" accept="image/*,.pdf" style="display:none" onchange="handleUpload(this,'company-id-display')"/>
+          <div class="upload-icon">🏢</div>
+          <div class="upload-title">Company ID or COE <span class="req">*</span></div>
+          <div class="upload-hint">JPG, PNG or PDF • Max 5MB</div>
+          <div class="upload-status" id="company-id-display">Click to upload</div>
+        </div>
+        <div class="upload-box" onclick="triggerUpload('gov-id-emp')">
+          <input type="file" id="gov-id-emp" accept="image/*,.pdf" style="display:none" onchange="handleUpload(this,'gov-id-emp-display')"/>
+          <div class="upload-icon">🪪</div>
+          <div class="upload-title">Valid Government ID <span class="req">*</span></div>
+          <div class="upload-hint">JPG, PNG or PDF • Max 5MB</div>
+          <div class="upload-status" id="gov-id-emp-display">Click to upload</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UNEMPLOYED DOCS -->
+    <div class="doc-group" id="docs-unemployed" style="display:none;">
+      <div class="doc-notice">
+        <span>📋</span> Required documents for <strong>Unemployed</strong> applicants
+      </div>
+      <div class="upload-grid">
+        <div class="upload-box" onclick="triggerUpload('nbi')">
+          <input type="file" id="nbi" accept="image/*,.pdf" style="display:none" onchange="handleUpload(this,'nbi-display')"/>
+          <div class="upload-icon">📑</div>
+          <div class="upload-title">NBI Clearance <span class="req">*</span></div>
+          <div class="upload-hint">JPG, PNG or PDF • Max 5MB</div>
+          <div class="upload-status" id="nbi-display">Click to upload</div>
+        </div>
+        <div class="upload-box" onclick="triggerUpload('med-cert')">
+          <input type="file" id="med-cert" accept="image/*,.pdf" style="display:none" onchange="handleUpload(this,'med-cert-display')"/>
+          <div class="upload-icon">🏥</div>
+          <div class="upload-title">Medical Certificate <span class="req">*</span></div>
+          <div class="upload-hint">Fit to Work • Max 5MB</div>
+          <div class="upload-status" id="med-cert-display">Click to upload</div>
+        </div>
+        <div class="upload-box" onclick="triggerUpload('gov-id-unemp')">
+          <input type="file" id="gov-id-unemp" accept="image/*,.pdf" style="display:none" onchange="handleUpload(this,'gov-id-unemp-display')"/>
+          <div class="upload-icon">🪪</div>
+          <div class="upload-title">Valid Government ID <span class="req">*</span></div>
+          <div class="upload-hint">JPG, PNG or PDF • Max 5MB</div>
+          <div class="upload-status" id="gov-id-unemp-display">Click to upload</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLACEHOLDER when no type selected -->
+    <div id="docs-placeholder" class="docs-placeholder">
+      <div class="placeholder-icon">📂</div>
+      <div class="placeholder-text">Select your applicant type above to see required documents</div>
+    </div>
+  </div>
+
+  <!-- AGREEMENT + SUBMIT -->
+  <div class="section-card submit-card">
+    <div class="agree-row">
+      <input type="checkbox" id="agree-terms" class="agree-check"/>
+      <label for="agree-terms" class="agree-label">
+        I confirm that all information provided is accurate and complete. I agree to the
+        <a href="#" class="link-green">Terms and Conditions</a> of CitiHub Dormitory.
+      </label>
+    </div>
+    <button class="submit-btn" onclick="handleSubmit()">
+      Submit Application →
+    </button>
+    <div class="submit-note">Our team will review your application within 1–2 business days.</div>
+  </div>
+
+</div>
+
+<!-- SUCCESS MODAL -->
+<div id="success-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
+  <div class="modal-box">
+    <img src="../images/check.jpg" class="modal-icon" alt="Success" />
+    <div class="modal-title">Application Submitted!</div>
+    <div class="modal-sub">Thank you! Your tenant application has been received. Our team will review it and contact you within 1–2 business days.</div>
+    <button class="modal-btn" onclick="window.location.href='main.html'">Go to Dashboard</button>
+  </div>
+</div>
+
+<script>
+  function selectType(type) {
+    document.querySelectorAll('.applicant-card').forEach(c => c.classList.remove('selected'));
+    document.getElementById('type-' + type).classList.add('selected');
+    document.getElementById('docs-student').style.display = 'none';
+    document.getElementById('docs-employed').style.display = 'none';
+    document.getElementById('docs-unemployed').style.display = 'none';
+    document.getElementById('docs-placeholder').style.display = 'none';
+    document.getElementById('docs-' + type).style.display = 'block';
+    document.querySelector('#section-docs .section-sub').textContent = 'Upload all required documents below';
+  }
+
+  function triggerUpload(id) {
+    document.getElementById(id).click();
+  }
+
+  function handleUpload(input, displayId) {
+    if (input.files && input.files[0]) {
+      const name = input.files[0].name;
+      const display = document.getElementById(displayId);
+      display.textContent = '✅ ' + name;
+      display.style.color = '#1a6b3a';
+      input.closest('.upload-box').classList.add('uploaded');
+    }
+  }
+
+  function handleSubmit() {
+    if (!document.getElementById('agree-terms').checked) {
+      alert('Please agree to the Terms and Conditions first.');
+      return;
+    }
+    document.getElementById('success-modal').style.display = 'flex';
+  }
+</script>
+
+</body>
+</html>
