@@ -1,0 +1,263 @@
+/* =============================
+   CitiHub Dormitory – Fill-up Form
+   ============================= */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green: #1a6b3a;
+  --green-light: #e8f5ee;
+  --green-mid: #2d8a52;
+  --accent: #25a25a;
+  --text: #1a1f2e;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --bg: #f5f7f5;
+  --white: #ffffff;
+  --red: #dc2626;
+  --card-shadow: 0 2px 12px rgba(26,107,58,0.08);
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 28px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-brand { display: flex; align-items: center; gap: 10px; }
+.nav-logo { width: 36px; height: 36px; border-radius: 8px; object-fit: contain; }
+.nav-brand-text { font-weight: 700; font-size: 15px; color: var(--text); }
+.nav-brand-sub { font-size: 11px; color: var(--muted); }
+.nav-step-label {
+  font-size: 12px; font-weight: 600;
+  color: var(--accent);
+  background: var(--green-light);
+  padding: 6px 14px; border-radius: 20px;
+}
+
+/* ── HERO BANNER ── */
+.hero-banner {
+  background: linear-gradient(135deg, var(--green), var(--green-mid));
+  padding: 22px 32px;
+}
+.hero-inner {
+  max-width: 860px; margin: 0 auto;
+  display: flex; align-items: center; gap: 16px;
+}
+.hero-icon {width: 48px; height: 48px;object-fit: contain; border-radius: 10px; }
+.hero-title { font-size: 20px; font-weight: 700; color: white; }
+.hero-sub { font-size: 13px; color: rgba(255,255,255,0.85); margin-top: 4px; line-height: 1.5; }
+
+/* ── PROGRESS BAR ── */
+.progress-wrap {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 32px;
+}
+.progress-bar {
+  max-width: 860px; margin: 0 auto;
+  display: flex; align-items: center;
+}
+.progress-step {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  min-width: 80px;
+}
+.step-circle {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--border); color: var(--muted);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+}
+.progress-step.done .step-circle {
+  background: var(--accent); color: white;
+}
+.progress-step.active .step-circle {
+  background: var(--green); color: white;
+  box-shadow: 0 0 0 4px var(--green-light);
+}
+.step-label { font-size: 11px; color: var(--muted); font-weight: 500; white-space: nowrap; }
+.progress-step.done .step-label,
+.progress-step.active .step-label { color: var(--green); font-weight: 600; }
+.progress-line {
+  flex: 1; height: 2px; background: var(--border); margin: 0 4px; margin-bottom: 18px;
+}
+.progress-line.filled { background: var(--accent); }
+
+/* ── PAGE ── */
+.page { max-width: 860px; margin: 0 auto; padding: 24px 32px 60px; }
+
+/* ── SECTION CARD ── */
+.section-card {
+  background: var(--white);
+  border-radius: 14px;
+  box-shadow: var(--card-shadow);
+  padding: 24px 28px;
+  margin-bottom: 20px;
+}
+.section-header { margin-bottom: 20px; }
+.section-title {
+  font-size: 15px; font-weight: 700; color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+}
+.section-title svg { width: 17px; height: 17px; color: var(--accent); }
+.section-sub { font-size: 12px; color: var(--muted); margin-top: 4px; margin-left: 25px; }
+
+/* ── FIELDS ── */
+.field-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-bottom: 16px;
+}
+.field.full { margin-bottom: 16px; }
+.field { display: flex; flex-direction: column; }
+.field-label {
+  font-size: 11px; font-weight: 600; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
+}
+.req { color: var(--red); }
+.field-input {
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 9px;
+  font-size: 14px; font-family: inherit;
+  color: var(--text);
+  background: var(--bg);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.field-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(37,162,90,0.12);
+  background: white;
+}
+select.field-input { cursor: pointer; }
+
+/* ── APPLICANT TYPE ── */
+.applicant-types {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+.applicant-card {
+  border: 2px solid var(--border);
+  border-radius: 12px; padding: 20px 16px;
+  text-align: center; cursor: pointer;
+  transition: all 0.2s;
+}
+.applicant-card:hover {
+  border-color: var(--accent);
+  background: var(--green-light);
+}
+.applicant-card.selected {
+  border-color: var(--green);
+  background: var(--green-light);
+  box-shadow: 0 0 0 3px rgba(26,107,58,0.1);
+}
+.applicant-icon { font-size: 28px; margin-bottom: 8px; }
+.applicant-label { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.applicant-desc { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+/* ── DOCUMENTS ── */
+.doc-notice {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--green-light); color: var(--green);
+  font-size: 13px; font-weight: 600;
+  padding: 10px 16px; border-radius: 8px;
+  margin-bottom: 16px;
+}
+.upload-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+.upload-box {
+  border: 2px dashed var(--border);
+  border-radius: 12px; padding: 22px 16px;
+  text-align: center; cursor: pointer;
+  transition: all 0.2s;
+}
+.upload-box:hover {
+  border-color: var(--accent);
+  background: var(--green-light);
+}
+.upload-box.uploaded {
+  border-color: var(--accent);
+  border-style: solid;
+  background: #f0fdf4;
+}
+.upload-icon { font-size: 26px; margin-bottom: 8px; }
+.upload-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.upload-hint { font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+.upload-status { font-size: 12px; color: var(--accent); font-weight: 500; }
+
+.docs-placeholder {
+  text-align: center; padding: 36px 20px;
+}
+.placeholder-icon { font-size: 36px; margin-bottom: 10px; opacity: 0.4; }
+.placeholder-text { font-size: 13px; color: var(--muted); }
+
+/* ── SUBMIT ── */
+.submit-card { text-align: center; }
+.agree-row {
+  display: flex; align-items: flex-start; gap: 10px;
+  text-align: left; margin-bottom: 20px;
+}
+.agree-check {
+  width: 16px; height: 16px; margin-top: 2px;
+  accent-color: var(--green); flex-shrink: 0; cursor: pointer;
+}
+.agree-label { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.link-green { color: var(--green); font-weight: 600; text-decoration: none; }
+.link-green:hover { text-decoration: underline; }
+.submit-btn {
+  width: 100%; padding: 14px;
+  background: var(--green); color: white;
+  border: none; border-radius: 10px;
+  font-size: 15px; font-weight: 700;
+  font-family: inherit; cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  letter-spacing: 0.3px;
+}
+.submit-btn:hover { background: var(--green-mid); transform: translateY(-1px); }
+.submit-btn:active { transform: translateY(0); }
+.submit-note { font-size: 12px; color: var(--muted); margin-top: 12px; }
+
+/* ── SUCCESS MODAL ── */
+.modal-box {
+  background: white; border-radius: 20px;
+  padding: 40px 36px; max-width: 420px; width: 90%;
+  text-align: center;
+  animation: popIn 0.3s ease;
+}
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.modal-icon { width: 100px; height: 100px; object-fit: contain; margin-bottom: 14px; }
+.modal-title { font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+.modal-sub { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 24px; }
+.modal-btn {
+  width: 100%; padding: 12px;
+  background: var(--green); color: white;
+  border: none; border-radius: 10px;
+  font-size: 14px; font-weight: 600;
+  font-family: inherit; cursor: pointer;
+}
+.modal-btn:hover { background: var(--green-mid); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .field-row { grid-template-columns: 1fr; }
+  .applicant-types { grid-template-columns: 1fr; }
+  .upload-grid { grid-template-columns: 1fr; }
+  .page { padding: 16px 16px 48px; }
+}
