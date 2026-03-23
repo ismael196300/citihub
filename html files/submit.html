@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <script>
+           if (localStorage.getItem("loggedIn") !== "true")window.location.href = "intro.html";
+    </script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Review & Submit — CITIHUB DORMITORY</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <link rel="stylesheet" href="../css files/submit.css"/>
+   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <img src="../images/logo.png" class="nav-logo" alt="CitiHub Logo" onerror="this.style.display='none'"/>
+    <div>
+      <div class="nav-brand-text">CITIHUB DORMITORY</div>
+      <div class="nav-brand-sub">📍 1st St, Santa Mesa, Manila, Metro Manila</div>
+    </div>
+  </div>
+  <div class="nav-step-label">Step 4 of 4 — Review &amp; Submit</div>
+</nav>
+
+<!-- HERO BANNER -->
+<div class="hero-banner">
+  <div class="hero-inner">
+    <img src="../images/logo.png" class="hero-icon" alt="CitiHub Logo" onerror="this.style.display='none'"/>
+    <div>
+      <div class="hero-title">Almost There — Review Your Application</div>
+      <div class="hero-sub">Please carefully review all details below before submitting. Once submitted, our team will process your application within 1–2 business days.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-wrap">
+  <div class="progress-bar">
+    <div class="progress-step done">
+      <div class="step-circle">✓</div>
+      <div class="step-label">Create Account</div>
+    </div>
+    <div class="progress-line filled"></div>
+    <div class="progress-step done">
+      <div class="step-circle">✓</div>
+      <div class="step-label">Choose Bedspace</div>
+    </div>
+    <div class="progress-line filled"></div>
+    <div class="progress-step done">
+      <div class="step-circle">✓</div>
+      <div class="step-label">Personal Info</div>
+    </div>
+    <div class="progress-line filled"></div>
+    <div class="progress-step active">
+      <div class="step-circle">4</div>
+      <div class="step-label">Submit</div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- APPLICATION REFERENCE -->
+  <div class="ref-banner">
+    <div class="ref-left">
+      <div class="ref-label">Application Reference</div>
+      <div class="ref-number">#CHD-2025-00847</div>
+    </div>
+    <div class="ref-right">
+      <div class="ref-date-label">Submitted on</div>
+      <div class="ref-date" id="submitDate">—</div>
+    </div>
+    <div class="ref-status">
+      <span class="status-dot"></span> Draft — Pending Submission
+    </div>
+  </div>
+
+  <!-- ── SECTION: BOOKING SUMMARY ── -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        Bedspace Booking
+      </div>
+      <a href="../html files/booking.html" class="edit-link">✏️ Edit</a>
+    </div>
+
+    <div class="summary-grid">
+      <div class="summary-item">
+        <div class="summary-label">Room Type</div>
+        <div class="summary-value">
+          <span class="badge badge-teal">❄️ Premium — Aircon Room</span>
+        </div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Bedspace</div>
+        <div class="summary-value highlight"></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Monthly Rate</div>
+        <div class="summary-value"></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Floor</div>
+        <div class="summary-value"></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Gender Assignment</div>
+        <div class="summary-value"><span class="badge badge-purple"></span></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Availability</div>
+        <div class="summary-value"><span class="badge badge-green">✅ Available</span></div>
+      </div>
+    </div>
+
+    <div class="cost-breakdown">
+      <div class="cost-title">Payment Breakdown</div>
+      <div class="cost-rows">
+        <div class="cost-row">
+          <span>Monthly Rent</span><span id="rent"></span>
+        </div>
+        <div class="cost-row">
+          <span>Security Deposit (1 month)</span><span id="deposit"></span>
+        </div>
+        <div class="cost-row">
+          <span>Advance Payment (1 month)</span><span id="advance"></span>
+        </div>
+        <div class="cost-row total-row">
+          <span>Total Due upon Move-in</span><span id="total"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION: PERSONAL INFORMATION ── -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Personal Information
+      </div>
+      <a href="../html files/fillup.html" class="edit-link">✏️ Edit</a>
+    </div>
+
+    <div class="summary-grid">
+      <div class="summary-item">
+        <div class="summary-label">First Name</div>
+        <div class="summary-value" id="firstName"></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Last Name</div>
+        <div class="summary-value" id="lastName"></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Email Address</div>
+        <div class="summary-value" id="email"></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Phone Number</div>
+        <div class="summary-value" id="phone"></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Date of Birth</div>
+        <div class="summary-value" id="birthDate"></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Gender</div>
+        <div class="summary-value" id="gender"></div>
+      </div>
+      <div class="summary-item full-span">
+        <div class="summary-label">Home Address</div>
+        <div class="summary-value" id="address"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION: EMERGENCY CONTACT ── -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        Emergency Contact
+      </div>
+      <a href="../html files/fillup.html" class="edit-link">✏️ Edit</a>
+    </div>
+
+    <div class="summary-grid">
+      <div class="summary-item">
+        <div class="summary-label">Contact Name</div>
+        <div class="summary-value" id="emergencyName"></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Relationship</div>
+        <div class="summary-value" id="relationship"></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Phone Number</div>
+        <div class="summary-value" id="emergencyPhone"></div>
+      </div>
+      <div class="summary-item">
+        <div class="summary-label">Alternative Number</div>
+        <div class="summary-value" id="emergencyAlt"></div>
+      </div>
+      <div class="summary-item full-span">
+        <div class="summary-label">Address</div>
+        <div class="summary-value" id="emergencyAddress"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION: APPLICANT TYPE & DOCUMENTS ── -->
+  <div class="section-card">
+    <div class="section-header">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Applicant Type &amp; Documents
+      </div>
+      <a href="../html files/fillup.html" class="edit-link">✏️ Edit</a>
+    </div>
+
+    <div class="applicant-summary">
+      <div class="applicant-chip">
+        <span class="chip-icon">🎓</span>
+        <div>
+          <div class="chip-label">Applicant Type</div>
+          <div class="chip-value" id="applicantType"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-checklist">
+      <div class="doc-check-item uploaded">
+        <div class="doc-check-icon">✅</div>
+        <div class="doc-check-info">
+          <div class="doc-check-name">School ID</div>
+          <div class="doc-check-files">school_id_front.jpg, school_id_back.jpg</div>
+        </div>
+        <div class="doc-check-count">2 files</div>
+      </div>
+      <div class="doc-check-item uploaded">
+        <div class="doc-check-icon">✅</div>
+        <div class="doc-check-info">
+          <div class="doc-check-name">Certificate of Enrollment / Registration Form</div>
+          <div class="doc-check-files">cor_2025.pdf</div>
+        </div>
+        <div class="doc-check-count">1 file</div>
+      </div>
+      <div class="doc-check-item uploaded">
+        <div class="doc-check-icon">✅</div>
+        <div class="doc-check-info">
+          <div class="doc-check-name">Valid Government ID</div>
+          <div class="doc-check-files">philsys_front.jpg, philsys_back.jpg</div>
+        </div>
+        <div class="doc-check-count">2 files</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SECTION: WHAT HAPPENS NEXT ── -->
+  <div class="section-card next-steps-card">
+    <div class="section-header">
+      <div class="section-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        What Happens Next
+      </div>
+    </div>
+    <div class="steps-timeline">
+      <div class="timeline-item">
+        <div class="timeline-icon tl-green">1</div>
+        <div class="timeline-content">
+          <div class="tl-title">Application Review</div>
+          <div class="tl-desc">Our admin team will review your documents and information within 1–2 business days.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-icon tl-blue">2</div>
+        <div class="timeline-content">
+          <div class="tl-title">Confirmation Call</div>
+          <div class="tl-desc">We will contact you via phone or email to confirm your slot and discuss move-in details.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-icon tl-orange">3</div>
+        <div class="timeline-content">
+          <div class="tl-title">Payment &amp; Move-in</div>
+          <div class="tl-desc">Complete the required payments (₱7,500.00) upon arrival and collect your room keys.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FINAL AGREEMENT & SUBMIT ── -->
+  <div class="section-card submit-card">
+
+    <div class="declaration-box">
+      <div class="declaration-icon">🛡️</div>
+      <div class="declaration-text">
+        <strong>Declaration of Accuracy</strong><br>
+        I certify that all information and documents submitted in this application are true, accurate, and complete to the best of my knowledge. I understand that providing false information may result in the cancellation of my application.
+      </div>
+    </div>
+
+    <div class="agree-row">
+      <input type="checkbox" id="agree-terms" class="agree-check" onchange="toggleSubmit()"/>
+      <label for="agree-terms" class="agree-label">
+        I have reviewed all details above and confirm they are correct. I agree to the
+        <a href="#" class="link-green">Terms and Conditions</a> and
+        <a href="#" class="link-green">House Rules</a> of CitiHub Dormitory.
+      </label>
+    </div>
+
+    <button class="submit-btn" id="submitBtn" onclick="handleSubmit()" disabled>
+      <span class="submit-btn-icon">🚀</span>
+      Submit Application
+    </button>
+    <div class="submit-note">By submitting, you agree that CitiHub Dormitory may process your personal information for tenancy purposes.</div>
+
+  </div>
+
+</div>
+
+<!-- SUCCESS MODAL -->
+<div id="success-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center; padding:20px;">
+  <div class="modal-box">
+    <div class="modal-confetti">🎉</div>
+    <div class="modal-check">✅</div>
+    <div class="modal-title">Application Submitted!</div>
+    <div class="modal-ref">Reference #CHD-2025-00847</div>
+    <div class="modal-sub">
+      Thank you, <strong>Juan</strong>! Your application has been received successfully.<br><br>
+      Our team will review your details and reach out within <strong>1–2 business days</strong>.
+      Keep an eye on <strong>juan.santos@email.com</strong> for updates.
+    </div>
+    <button class="modal-btn" onclick="window.location.href='main.html'">Go to Dashboard →</button>
+    <div class="modal-note">A confirmation email has been sent to your registered address.</div>
+  </div>
+</div>
+
+<script src="../js files/submit.js"></script>
+</body>
+</html>
